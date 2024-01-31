@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8906645488576388054}
   - component: {fileID: 5142168600019569635}
   m_Layer: 0
-  m_Name: Soldier
+  m_Name: Soldier 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -428,7 +428,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: -6651272749063360639, guid: c004fa806dc65544aac900261e66ed1e,
+      objectReference: {fileID: 4106691986641640505, guid: a7ef20ac51cbadc43b6462ef6a1dafea,
         type: 3}
     - target: {fileID: 1681251699006357803, guid: ae7ba0004e83e5e42988ffb530d41470,
         type: 3}
