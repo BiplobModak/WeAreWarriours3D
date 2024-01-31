@@ -25,17 +25,15 @@ public class MeatGenerator : MonoBehaviour
     }
 
 
-
-
-
-
     /// <summary>
     /// generating meat here
     /// </summary>
     private void GenerateMeat()
     {
-        float temp = 10;
+        float temp = 1f;
+
         // accessaing meat generate time from level manager
+        //not efficient
         float meatGenerateTime = levelManager.GetMeatGenerateTime;
 
         DOTween.To(() => temp, x => temp = x, 0f, meatGenerateTime).OnComplete(() =>
@@ -47,8 +45,6 @@ public class MeatGenerator : MonoBehaviour
             Debug.Log("MeatCount");
 #endif
         }).SetId("FoodGenerator").SetSpeedBased();
-
-
     }
 
     /// <summary>
@@ -73,4 +69,7 @@ public class MeatGenerator : MonoBehaviour
         DOTween.Kill("FoodGenerator");
 #endif
     }
+
+
+    /// requird upgread subscriber
 }

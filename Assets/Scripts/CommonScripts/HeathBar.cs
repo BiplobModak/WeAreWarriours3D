@@ -10,16 +10,13 @@ public class HeathBar : MonoBehaviour
     float unit;
     private void OnEnable()
     {
-        fillHalth.fillAmount = 1;
-        unit = 1 / healthStatus.GetMaxHelath;
+        fillHalth.fillAmount = 1f;
+        unit = 1f / healthStatus.GetMaxHelath;
 
         //Health status
-
         healthStatus.damage += OnGetDamage;
         healthStatus.death += OnGetDamage;
     }
-
-
 
     private void OnDisable()
     {

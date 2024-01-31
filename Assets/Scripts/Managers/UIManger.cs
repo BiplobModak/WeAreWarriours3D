@@ -47,13 +47,15 @@ public class UIManger : MonoBehaviour
     /// <param name="meatCount"></param>
     private void UpdateFillImage() 
     {
+        
+
         float temp = 0f;
-        DOTween.To(() => temp, x => temp = x, 10f, meatGenerateTime).SetSpeedBased().OnComplete(() =>
+        DOTween.To(() => temp, x => temp = x, 1f, meatGenerateTime).OnComplete(() =>
         {
             meatfeelIamge.fillAmount = 0f;
             UpdateFillImage();
-        }).OnUpdate(() => {
-            meatfeelIamge.fillAmount = temp/10f;
+        }).SetSpeedBased().OnUpdate(() => {
+            meatfeelIamge.fillAmount = temp;
         }).SetEase(Ease.Linear);
 
         /// speed modifier not woring

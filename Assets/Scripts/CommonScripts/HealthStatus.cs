@@ -2,7 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthStatus : MonoBehaviour
+/// <summary>
+/// Generating Health System
+/// 
+/// </summary>
+public class HealthStatus : MonoBehaviour, IHealth
 {
     /// <summary>
     /// this delegate resposible for health statys
@@ -21,9 +25,9 @@ public class HealthStatus : MonoBehaviour
     /// <summary>
     /// Self Health
     /// </summary>
-    public float Health { get => health; protected set { health = value; } }
+    public float Health { get => health; set { health = value; } }
 
-    
+
 
     /// <summary>
     /// Getting damge From enemys
@@ -43,4 +47,8 @@ public class HealthStatus : MonoBehaviour
         }
     }
 
+    void IHealth.GetDamage(float damage)
+    {
+        throw new System.NotImplementedException();
+    }
 }
