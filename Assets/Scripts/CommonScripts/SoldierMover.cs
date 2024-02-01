@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using TreeEditor;
 using UnityEngine;
 using UnityEngine.AI;
@@ -5,13 +6,12 @@ using UnityEngine.AI;
 /// <summary>
 /// this script will control movement and animation
 /// </summary>
-[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(NavMeshAgent), typeof(AnimationControler))]
 public class SoldierMover : MonoBehaviour
 {
-    [SerializeField] private NavMeshAgent navMeshAgent;
-
-    [SerializeField] private Animator animator;
-    [SerializeField] AnimationClip attackClip, idelclip, walkClip;
+    [SerializeField, Required] private NavMeshAgent navMeshAgent;
+    [SerializeField, Required] private AnimationControler animControler;
+    
 
     private void OnEnable()
     { 
@@ -29,12 +29,14 @@ public class SoldierMover : MonoBehaviour
         // Move the player to the specified destination
         Debug.Log(navMeshAgent);
         navMeshAgent.SetDestination(destination);
+        animControler.Move();
     }
 
     public void StopMovement()
     {
         // Stop the player's movement
         navMeshAgent.isStopped = true;
+        animControler.Attack();
     }
 
     public void ResumeMovement()

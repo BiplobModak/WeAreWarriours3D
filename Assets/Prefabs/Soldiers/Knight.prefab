@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 1405831184013794386}
   - component: {fileID: 8906645488576388054}
   - component: {fileID: 5142168600019569635}
-  - component: {fileID: -7193549728800139739}
+  - component: {fileID: -2022074661693120545}
+  - component: {fileID: 9099289281680545819}
   m_Layer: 0
-  m_Name: Soldier
+  m_Name: Knight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,9 +93,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15628191c589c7c49ae20f19920c2657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
-  health: 10
---- !u!114 &-7193549728800139739
+  maxHealth: 20
+  health: 20
+--- !u!114 &-2022074661693120545
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,6 +108,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 1405831184013794386}
+  animControler: {fileID: 9099289281680545819}
+--- !u!114 &9099289281680545819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294159567072232836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea6a22d163ad36f44b665855c40bbdfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  states:
+  - animatonStage: 0
+    value: 0
+  - animatonStage: 1
+    value: 1
+  - animatonStage: 2
+    value: 4
+  animator: {fileID: 5109036620634267148}
+  bleand: Blend
 --- !u!1 &4772513772797379345
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,7 +465,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: -6651272749063360639, guid: c004fa806dc65544aac900261e66ed1e,
+      objectReference: {fileID: -7849127435017385391, guid: e8c6bdaeab5b9e143b830fde0d5c9d49,
         type: 3}
     - target: {fileID: 1681251699006357803, guid: ae7ba0004e83e5e42988ffb530d41470,
         type: 3}
@@ -467,6 +490,12 @@ PrefabInstance:
 --- !u!4 &1154853794557969526 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ae7ba0004e83e5e42988ffb530d41470,
+    type: 3}
+  m_PrefabInstance: {fileID: 1696841201751073693}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5109036620634267148 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: ae7ba0004e83e5e42988ffb530d41470,
     type: 3}
   m_PrefabInstance: {fileID: 1696841201751073693}
   m_PrefabAsset: {fileID: 0}

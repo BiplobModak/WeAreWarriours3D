@@ -1166,7 +1166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a0d47dae0186c24f86a4c126cceebe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soldierPrefab: {fileID: 1294159567072232836, guid: a67f417d61301cc419db0847db3f3d67,
+  soldierPrefab: {fileID: 1294159567072232836, guid: 594ff4ffe2bf02246bd72a8e402ff796,
     type: 3}
 --- !u!114 &371380983
 MonoBehaviour:
@@ -1180,7 +1180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd18f32a6c315a34eb0f3dcb8496e397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soldierPrefab: {fileID: 1294159567072232836, guid: 594ff4ffe2bf02246bd72a8e402ff796,
+  soldierPrefab: {fileID: 1294159567072232836, guid: a67f417d61301cc419db0847db3f3d67,
     type: 3}
 --- !u!1 &410087039
 GameObject:

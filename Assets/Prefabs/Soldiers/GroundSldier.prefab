@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 1405831184013794386}
   - component: {fileID: 8906645488576388054}
   - component: {fileID: 5142168600019569635}
-  - component: {fileID: -2022074661693120545}
+  - component: {fileID: -7231994584835352695}
+  - component: {fileID: 8572901816592834396}
   m_Layer: 0
-  m_Name: Soldier 2
+  m_Name: GroundSldier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,7 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   health: 10
---- !u!114 &-2022074661693120545
+--- !u!114 &-7231994584835352695
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,6 +108,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 1405831184013794386}
+  animControler: {fileID: 8572901816592834396}
+--- !u!114 &8572901816592834396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294159567072232836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea6a22d163ad36f44b665855c40bbdfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  states:
+  - animatonStage: 0
+    value: 0
+  - animatonStage: 1
+    value: 1
+  - animatonStage: 2
+    value: 2
+  animator: {fileID: 5109036620634267148}
+  bleand: Blend
 --- !u!1 &4772513772797379345
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,6 +463,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1681251699006357803, guid: ae7ba0004e83e5e42988ffb530d41470,
         type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4106691986641640505, guid: a7ef20ac51cbadc43b6462ef6a1dafea,
+        type: 3}
+    - target: {fileID: 1681251699006357803, guid: ae7ba0004e83e5e42988ffb530d41470,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 6c52bd932720ade4a9bd8a7f7d6827e9, type: 2}
@@ -461,6 +490,12 @@ PrefabInstance:
 --- !u!4 &1154853794557969526 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ae7ba0004e83e5e42988ffb530d41470,
+    type: 3}
+  m_PrefabInstance: {fileID: 1696841201751073693}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5109036620634267148 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: ae7ba0004e83e5e42988ffb530d41470,
     type: 3}
   m_PrefabInstance: {fileID: 1696841201751073693}
   m_PrefabAsset: {fileID: 0}
