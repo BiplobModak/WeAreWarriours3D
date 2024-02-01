@@ -17,7 +17,7 @@ public class SoldierPool : MonoBehaviour
         thorwerFactory = GetComponent<ThrowingSoldierFactory>();
         knightFactory = GetComponent<KnightFactory>();
     }
-
+    //Need to chage here ================================================================
     /// <summary>
     /// Generating the loop for soldies, if it has the soldier it will return but if it don't have any it will create 
     /// </summary>
@@ -29,6 +29,7 @@ public class SoldierPool : MonoBehaviour
         if (!poolDictionary.ContainsKey(soldierType))
         {
             poolDictionary[soldierType] = new Queue<ISoldier>();
+            Debug.Log("Pool Created"+ poolDictionary[soldierType].Count);
         }
 
         if (poolDictionary[soldierType].Count == 0)
@@ -37,19 +38,22 @@ public class SoldierPool : MonoBehaviour
             switch (soldierType)
             {
                 case SolderType.Ground:
-                    { 
-                        ISoldier groundSoldier = groundSoldierFactory.CreateSoldier(SolderType.Ground, poolDictionary[soldierType].Count);
+                    {
+                        SoldierBaseClass groundSoldier = groundSoldierFactory.CreateSoldier(SolderType.Ground, poolDictionary[soldierType].Count);
+                        Debug.Log(groundSoldier);
                         return groundSoldier;
                     }
                 case SolderType.Thrower:
-                {
-                    ISoldier thrwingsoldier = thorwerFactory.CreateSoldier(SolderType.Thrower, poolDictionary[soldierType].Count);
-                    return thrwingsoldier;
-                }
+                    {
+                        SoldierBaseClass thrwingsoldier = thorwerFactory.CreateSoldier(SolderType.Thrower, poolDictionary[soldierType].Count);
+                        Debug.Log(thrwingsoldier);
+                        return thrwingsoldier;
+                    }
                 case SolderType.Knight:
-                    { 
-                        ISoldier soldier = knightFactory.CreateSoldier(SolderType.Knight, poolDictionary[soldierType].Count);
-                        return soldier;
+                    {
+                        SoldierBaseClass knight = knightFactory.CreateSoldier(SolderType.Knight, poolDictionary[soldierType].Count);
+                        Debug.Log(knight);
+                        return knight;
                     }
                 default:
                     {
@@ -77,12 +81,13 @@ public class SoldierPool : MonoBehaviour
     /// <param name="soldier"></param>
     public void ReleaseSoldier(ISoldier soldier)
     {
+        Debug.Log(soldier);
+
         if (soldier is MonoBehaviour monoBehaviour)
         {
             monoBehaviour.gameObject.SetActive(false);
         }
-        
-        poolDictionary[soldier.SolderType].Enqueue(soldier);
+        poolDictionary[soldier.Type].Enqueue(soldier);
     }
 
 }

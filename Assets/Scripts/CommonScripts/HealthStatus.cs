@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +17,12 @@ public class HealthStatus : MonoBehaviour, IHealth
     public HealthStatusFlag damage;
     public HealthStatusFlag death;
 
-    [SerializeField]private float health, maxHealth;
+    /// <summary>
+    /// only used in UI 
+    /// </summary>
+    [SerializeField]private float maxHealth;
+
+    [SerializeField]private float health;
 
     /// <summary>
     /// getting maxHealth
@@ -47,8 +53,4 @@ public class HealthStatus : MonoBehaviour, IHealth
         }
     }
 
-    void IHealth.GetDamage(float damage)
-    {
-        throw new System.NotImplementedException();
-    }
 }

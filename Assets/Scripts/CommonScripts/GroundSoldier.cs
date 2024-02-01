@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 3rd SOldider type with high life value
+/// Base solder short attack Range and low type
 /// </summary>
-public class Knight : SoldierBaseClass
+public class GroundSoldier : SoldierBaseClass
 {
+   
     public override void Attack()
     {
         throw new System.NotImplementedException();

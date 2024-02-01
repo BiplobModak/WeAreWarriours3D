@@ -6,16 +6,19 @@ using UnityEngine;
 public class GroundSoliderFactory : MonoBehaviour, ISoldierFactory
 {
     [SerializeField] GameObject soldierPrefab;
-    public ISoldier CreateSoldier(SolderType type, int id)
+    public SoldierBaseClass CreateSoldier(SolderType type, int id)
     {
         GameObject soldier = Instantiate(soldierPrefab, transform.position, transform.rotation);
 
         soldier.name = type.ToString() + "_" + id.ToString();
 
-        ISoldier instance = soldier.GetComponent<ISoldier>();
+        SoldierBaseClass instance = soldier.GetComponent<SoldierBaseClass>();
         if (instance == null)
         {
-            soldier.AddComponent<GroundSolder>();
+            GroundSoldier groundSoldier = soldier.AddComponent<GroundSoldier>();
+            groundSoldier.ID = id;
+            groundSoldier.Type = type;
+            return groundSoldier;
         }
         return instance;
     }

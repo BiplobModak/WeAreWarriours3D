@@ -1,5 +1,5 @@
 
 public interface ISoldierFactory
 {
-    ISoldier CreateSoldier(SolderType type, int id);
+    SoldierBaseClass CreateSoldier(SolderType type, int id);
 }

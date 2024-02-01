@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 1405831184013794386}
   - component: {fileID: 8906645488576388054}
   - component: {fileID: 5142168600019569635}
+  - component: {fileID: -7231994584835352695}
   m_Layer: 0
-  m_Name: Soldier
+  m_Name: Soldier 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91,8 +92,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15628191c589c7c49ae20f19920c2657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
   maxHealth: 10
+  health: 10
+--- !u!114 &-7231994584835352695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294159567072232836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b72d78df050e4184b96a9de099d857d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  navMeshAgent: {fileID: 1405831184013794386}
 --- !u!1 &4772513772797379345
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,7 +442,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: -6651272749063360639, guid: c004fa806dc65544aac900261e66ed1e,
+      objectReference: {fileID: 4106691986641640505, guid: a7ef20ac51cbadc43b6462ef6a1dafea,
         type: 3}
     - target: {fileID: 1681251699006357803, guid: ae7ba0004e83e5e42988ffb530d41470,
         type: 3}

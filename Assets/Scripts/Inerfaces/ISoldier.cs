@@ -6,7 +6,7 @@ public interface ISoldier
 {
     
     //identity
-    short ID { get; set; }
+    int ID { get; set; }
     /// <summary>
     /// Atached Health Status
     /// </summary>
@@ -14,16 +14,7 @@ public interface ISoldier
     /// <summary>
     /// Solder type
     /// </summary>
-    SolderType SolderType { get; set; }
-
-    /// <summary>
-    /// Attack enemys 
-    /// </summary>
-    void Attack();
-    /// <summary>
-    /// Move and trigger attack
-    /// </summary>
-    void Ditect();
+    SolderType Type { get; set; }   
     
 }
 /// <summary>

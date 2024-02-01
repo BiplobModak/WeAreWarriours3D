@@ -22,7 +22,13 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Getting level manager. 
     /// </summary>
-    public LevelManager GetLevelMange => correnLevelManger;   
+    public LevelManager GetLevelMange => correnLevelManger;
+
+    /// <summary>
+    /// Player Base
+    /// </summary>
+    [SerializeField] private PlayerSpawnManager spawnManager;
+    public PlayerSpawnManager GetPlayerBase { get { return spawnManager; } }
     
    private void Awake()
    {

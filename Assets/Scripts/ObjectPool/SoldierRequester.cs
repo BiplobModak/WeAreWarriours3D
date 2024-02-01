@@ -1,48 +1,58 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SoldierRequester : MonoBehaviour
 {
-    [SerializeField] SoldierPool pool;
-    [SerializeField] int requestCount = 0;
-    List<ISoldier> requestsSolder;
+    [SerializeField] Queue<ISoldier> soldiers = new Queue<ISoldier>();
+    
+    [SerializeField, BoxGroup("Runtime")] SoldierPool pool;
+    [SerializeField,BoxGroup("Runtime")] PlayerSpawnManager playerBase;
+
+
     private void OnEnable()
     {
-        requestsSolder = new List<ISoldier>();
+        playerBase = GameManager.Instance.GetPlayerBase;
     }
 
-    [ContextMenu("Create Ground")]
+    [Button]
     public void GetSoldier() 
     {
-        ISoldier solider = pool.GetSoldier(SolderType.Ground);
-        requestsSolder.Add(solider);
-        //pool.ReleaseSoldier(solider);
-
+        ISoldier soldier = pool.GetSoldier(SolderType.Ground);
+        
+        ActivateSolder(soldier);
     }
-    [ContextMenu("Create Thrower")]
+
+    [Button]
     public void GetThrower()
     {
-        ISoldier solider = pool.GetSoldier(SolderType.Thrower);
-        //pool.ReleaseSoldier(solider);
-        requestsSolder.Add(solider);
-
+        ISoldier soldier = pool.GetSoldier(SolderType.Thrower);
+        ActivateSolder(soldier);
     }
-    [ContextMenu("Create Kning")]
+
+    [Button]
     public void GetKnight()
     {
-        ISoldier solider = pool.GetSoldier(SolderType.Knight);
-        //pool.ReleaseSoldier(solider);
-        requestsSolder.Add(solider);
-
+        ISoldier soldier = pool.GetSoldier(SolderType.Knight);
+        ActivateSolder(soldier);
     }
-    [ContextMenu("Realise Soldier")]
+
+    [Button]
     public void ReleaseSoldier()
     {
-        if (requestCount >= requestsSolder.Count)
-            return;
+        ISoldier soldier = soldiers.Dequeue();
+        pool.ReleaseSoldier(soldier);
+    }
 
-        pool.ReleaseSoldier(requestsSolder[requestCount]);
-        requestCount++;
+    private void ActivateSolder(ISoldier soldier) 
+    {
+        if (soldier is MonoBehaviour monoBehaviour)
+        {
+            monoBehaviour.gameObject.SetActive(true);
+            monoBehaviour.transform.position = transform.position;
+            monoBehaviour.GetComponent<SoldierMover>().MoveTo(playerBase.transform.position);
+            soldiers.Enqueue(soldier);
+        }
     }
 }
