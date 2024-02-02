@@ -2,53 +2,80 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 /// <summary>
 /// Base solder short attack Range and low type
 /// this script respocibility is to detact and attack and control all components
 /// </summary>
 public class GroundSoldier : SoldierBaseClass
 {
-    [SerializeField] List<Health> currentEnemysInRange;
-    [SerializeField] Health currentTarget;
-    [SerializeField] SoldierMover mover;
+    /// <summary>
+    /// All refinance enemy that's are closed
+    /// </summary>
+    [SerializeField, BoxGroup("Runtime"), ReadOnly] List<Health> currentEnemysInRange;
+    /// <summary>
+    /// Target enemy health
+    /// </summary>
+    [SerializeField, BoxGroup("Runtime"),ReadOnly] Health currentTarget;
+    /// <summary>
+    /// Soldier mover
+    /// </summary>
+    [SerializeField, BoxGroup("Runtime"), ReadOnly] SoldierMover mover;
+
+    /// <summary>
+    /// Getting components and 
+    /// </summary>
     protected override void OnEnable()
     {
-        //got the weaopn and self health
+        //got the weapon and self health
         base.OnEnable();
         mover = GetComponent<SoldierMover>();
         currentEnemysInRange = new List<Health>();
         healthStatus.death += SelfDeath;
 
     }
+    /// <summary>
+    /// Attacking the enemies and playing animation
+    /// </summary>
     public override void Attack()
     {
         if (!currentTarget.gameObject.activeInHierarchy) return;
 
         Debug.Log("Attacking");
-        transform.DOLookAt(currentTarget.transform.position, .1f).OnComplete(() => { 
+        //transform.DOLookAt(currentTarget.transform.position, .1f).OnComplete(() => { 
+        
+        //});
             weapon.Attack(currentTarget);
-            mover.PlayeAttackAnimation();
         
-        });
-        
+        // stopping coroutine if object is disable
         if(gameObject.activeInHierarchy)
             StartCoroutine(AttackRipiter());
 
     }
 
+    /// <summary>
+    /// Using for delay and loop
+    /// </summary>
+    /// <returns></returns>
     IEnumerator AttackRipiter()
     {
         yield return new WaitForSeconds(weapon.AttackRate);
+        
         Attack();
 
     }
 
+    /// <summary>
+    /// When self death
+    /// It may Not need soldiers will collected by Object pool
+    /// </summary>
+    /// <param name="h"></param>
     public override void SelfDeath(Health h)
     {
         gameObject.SetActive(false);        
     }
     /// <summary>
-    /// 
+    /// detecting enemys based on record
     /// </summary>
     public override void Detect()
     {
@@ -60,10 +87,14 @@ public class GroundSoldier : SoldierBaseClass
         }
         else 
         {
+            //continueing movement again
             mover.ResumeMovement();
         }
     }
 
+    /// <summary>
+    /// Checkeing distance by InvokRepeting
+    /// </summary>
     private void CheckDistacne() 
     {
         float distance = Vector3.Distance(transform.position, currentTarget.transform.position);
@@ -74,6 +105,7 @@ public class GroundSoldier : SoldierBaseClass
             CancelInvoke(nameof(CheckDistacne));
             //moveer stop movement
             mover.StopMovement();
+            mover.PlayeAttackAnimation();
             //weapon start attaking
             Attack();
         }
@@ -93,6 +125,9 @@ public class GroundSoldier : SoldierBaseClass
         }
     }
 
+    /// <summary>
+    /// Calling wehnd enemy curretn enemy is death
+    /// </summary>
     private void CurretnTargetDeth() 
     {
         
@@ -100,6 +135,12 @@ public class GroundSoldier : SoldierBaseClass
         Detect();
     }
 
+
+
+    /// <summary>
+    /// Decting colution based on trigger inter
+    /// </summary>
+    /// <param name="other"></param>
     protected override void OnTriggerEnter(Collider other)
     {
         //nothing is doing in base class

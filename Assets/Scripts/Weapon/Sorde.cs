@@ -1,10 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
+/// <summary>
+/// A type of weapon High damage low radious
+/// </summary>
 public class Sorde : BaseWeapon
 {
+    /// <summary>
+    /// Main attacking hapning here
+    /// </summary>
+    /// <param name="healthStatus"></param>
     public override void Attack(Health healthStatus)
     {
         if (healthStatus == null) return;

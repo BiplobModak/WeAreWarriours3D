@@ -2,17 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 
 /// <summary>
 /// Only for show projectile and visual
 /// </summary>
 public class StoneThrower : BaseWeapon
 {
-    [SerializeField] GameObject throwObject;
-    [SerializeField] Transform trowpoint;
+    /// <summary>
+    /// Prefex From Editor
+    /// </summary>
+    [SerializeField, Required] GameObject throwObject;
+
+    [SerializeField, Required] Transform trowpoint;
     [SerializeField] float trowDelay = 1f;
     [SerializeField] float trowPower = 1f;
+    /// <summary>
+    /// Stone pool
+    /// </summary>
     [SerializeField] Queue<Transform> stones = new Queue<Transform>();
+
+    
+
     /// <summary>
     /// Oposit soldier, it's Change based on ditection
     /// </summary>
@@ -67,8 +78,8 @@ public class StoneThrower : BaseWeapon
     /// <param name="gameObject"></param>
     private void ResetOnDeath(Transform stone)
     {
-        stone.parent = this.transform;
         stone.gameObject.SetActive(false);
+        stone.parent = this.transform;
         stone.transform.localPosition = Vector3.zero;
         stones.Enqueue(stone);
         

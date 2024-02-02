@@ -13,7 +13,7 @@ public enum BasicAnimationStage
 }
 
 /// <summary>
-/// only user for stracture data
+/// only user for stricture data
 /// </summary>
 [Serializable]
 public struct AnimeStage 
@@ -23,7 +23,7 @@ public struct AnimeStage
 }
 
 /// <summary>
-/// controling animationa and controler
+/// controlling animations and controller
 /// </summary>
 public class AnimationControler : MonoBehaviour
 {
@@ -32,11 +32,11 @@ public class AnimationControler : MonoBehaviour
     /// </summary>
     [SerializeField,Tooltip("Soldier Animation Name and value goes here")] List<AnimeStage> states = new List<AnimeStage>();
     /// <summary>
-    /// for Easy acccess
+    /// for Easy access
     /// </summary>
     [SerializeField] private Dictionary<BasicAnimationStage, int> animationvalue = new Dictionary<BasicAnimationStage, int>();
     /// <summary>
-    /// player aniamton
+    /// player animation
     /// </summary>
     [SerializeField, Required] Animator animator;
     [SerializeField] string bleand = "Bleand";

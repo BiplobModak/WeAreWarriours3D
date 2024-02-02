@@ -8,7 +8,7 @@ public class SoldierPool : MonoBehaviour
     private ISoldierFactory groundSoldierFactory, thorwerFactory, knightFactory;
 
     /// <summary>
-    /// getting all soldier factory referacne 
+    /// getting all soldier factory reference 
     /// </summary>
     private void Start()
     {
@@ -17,12 +17,12 @@ public class SoldierPool : MonoBehaviour
         thorwerFactory = GetComponent<ThrowingSoldierFactory>();
         knightFactory = GetComponent<KnightFactory>();
     }
-    //Need to chage here ================================================================
+    //Need to change here ================================================================
     /// <summary>
-    /// Generating the loop for soldies, if it has the soldier it will return but if it don't have any it will create 
+    /// Generating the loop for soldiers, if it has the soldier it will return but if it don't have any it will create 
     /// </summary>
     /// <param name="soldierType">enum which can prefer as soldier type</param>
-    /// <returns>Isolder interface</returns>
+    /// <returns>Isolde interface</returns>
     /// <exception cref="System.NullReferenceException"></exception>
     public ISoldier GetSoldier(SolderType soldierType)
     {
@@ -40,6 +40,7 @@ public class SoldierPool : MonoBehaviour
                 case SolderType.Ground:
                     {
                         SoldierBaseClass groundSoldier = groundSoldierFactory.CreateSoldier(SolderType.Ground, poolDictionary[soldierType].Count);
+                        
                         Debug.Log(groundSoldier);
                         return groundSoldier;
                     }

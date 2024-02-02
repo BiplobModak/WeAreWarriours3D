@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Holding basic Inaformation and basic component for Weapon
+/// Holding basic Information and basic component for Weapon
 /// </summary>
 public abstract class BaseWeapon : MonoBehaviour, IWeapon
 {
@@ -15,22 +15,25 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     public float AttackRate { get { return attackrate; } set { attackrate = value; } }
 
     public abstract void Attack(Health healthStatus);
+
     #region Gizmos
     private void OnDrawGizmos()
     {
-        // Set the color for Gizmos
+        // Set the color for Gizmo's
         Gizmos.color = Color.green;
 
-        // Draw a sphere Gizmo at the GameObject's position
-        Gizmos.DrawWireSphere(transform.root.position, range);        
+        // Draw a sphere Gizmo's at the GameObject's position
+        Gizmos.DrawWireSphere(transform.root.position, range); 
+
+        transform.root.GetComponent<SphereCollider>().radius = range;
     }
 
     private void OnDrawGizmosSelected()
     {
-        // Set a different color for Gizmos when the GameObject is selected
+        // Set a different color for Gizmo's when the GameObject is selected
         Gizmos.color = Color.black;
 
-        // Draw a wire cube Gizmo at the GameObject's position
+        // Draw a wire cube Gizmo's at the GameObject's position
         //Gizmos.DrawWireCube(transform.root.position, Vector3.one * range);
     }
     #endregion

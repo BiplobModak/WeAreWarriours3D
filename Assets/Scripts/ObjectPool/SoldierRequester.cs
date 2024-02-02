@@ -45,13 +45,13 @@ public class SoldierRequester : MonoBehaviour
     }
 
     [Button]
-    public void ReleaseSoldier()
+    public void ReleaseSoldier(Health health)
     {
-        ISoldier soldier = soldiers.Dequeue();
-        pool.ReleaseSoldier(soldier);
+        ISoldier soldier = health.GetComponent<ISoldier>();
+        pool.ReleaseSoldier(soldier); ;
     }
     /// <summary>
-    /// Activateing and setting target for moe
+    /// Activating and setting target for more
     /// </summary>
     /// <param name="soldier"></param>
     private void ActivateSolder(ISoldier soldier) 
@@ -59,11 +59,13 @@ public class SoldierRequester : MonoBehaviour
         if (soldier is MonoBehaviour monoBehaviour)
         {
             monoBehaviour.gameObject.SetActive(true);
-            ///seeting tags
+            ///setting tags
             
             monoBehaviour.tag = transform.tag;
             monoBehaviour.transform.position = transform.position;
             monoBehaviour.GetComponent<SoldierMover>().MoveTo(soldierBase.transform.position);
+            // upper level relies
+            monoBehaviour.GetComponent<Health>().death += ReleaseSoldier;
             soldiers.Enqueue(soldier);
         }
     }

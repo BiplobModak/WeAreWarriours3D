@@ -24,7 +24,10 @@ public class SoldierMover : MonoBehaviour
         
     }
 
-
+    /// <summary>
+    /// Moving towards target
+    /// </summary>
+    /// <param name="destination"></param>
     public void MoveTo(Vector3 destination)
     {
         // Move the player to the specified destination
@@ -35,19 +38,27 @@ public class SoldierMover : MonoBehaviour
         animControler.Move();
     }
 
+    /// <summary>
+    /// Stop movement and Playing idle animation
+    /// </summary>
     public void StopMovement()
     {
         // Stop the player's movement
         navMeshAgent.isStopped = true;
         animControler.Idel();
     }
-
+    /// <summary>
+    /// I know it's dumb
+    /// just playing animation
+    /// </summary>
     public void PlayeAttackAnimation() 
     {
         animControler.Attack();
     }
 
-
+    /// <summary>
+    /// Rersuming movement
+    /// </summary>
     public void ResumeMovement()
     {
         if (!navMeshAgent.enabled) return;
