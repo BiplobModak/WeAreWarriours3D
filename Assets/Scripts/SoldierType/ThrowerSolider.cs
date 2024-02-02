@@ -12,7 +12,7 @@ public class ThrowerSolider : SoldierBaseClass
     {
     }
 
-    public override void SelfDeath()
+    public override void SelfDeath(Health h)
     {
     }
 

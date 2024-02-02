@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 5142168600019569635}
   - component: {fileID: -7231994584835352695}
   - component: {fileID: 8572901816592834396}
-  - component: {fileID: 8280419426206155779}
   - component: {fileID: 9044428708237173390}
+  - component: {fileID: 2887010296556232796}
   m_Layer: 0
   m_Name: GroundSldier
   m_TagString: Untagged
@@ -89,6 +89,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 1405831184013794386}
   animControler: {fileID: 8572901816592834396}
+  movepoint: {x: 0, y: 0, z: 0}
 --- !u!114 &8572901816592834396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,29 +111,6 @@ MonoBehaviour:
     value: 2
   animator: {fileID: 5109036620634267148}
   bleand: Blend
---- !u!136 &8280419426206155779
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1294159567072232836}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.7
-  m_Height: 3.290854
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.145426, z: 0}
 --- !u!135 &9044428708237173390
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -154,6 +132,33 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &2887010296556232796
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294159567072232836}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!1 &4772513772797379345
 GameObject:
   m_ObjectHideFlags: 0
@@ -627,22 +632,22 @@ PrefabInstance:
     - target: {fileID: 7250161209796794105, guid: 286b013d062322e43aa452e79f1d950a,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.706491
+      value: 0.8267468
       objectReference: {fileID: 0}
     - target: {fileID: 7250161209796794105, guid: 286b013d062322e43aa452e79f1d950a,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.70772207
+      value: 0.44813567
       objectReference: {fileID: 0}
     - target: {fileID: 7250161209796794105, guid: 286b013d062322e43aa452e79f1d950a,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000015227118
+      value: -0.31105834
       objectReference: {fileID: 0}
     - target: {fileID: 7250161209796794105, guid: 286b013d062322e43aa452e79f1d950a,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000005366017
+      value: 0.13750184
       objectReference: {fileID: 0}
     - target: {fileID: 7250161209796794105, guid: 286b013d062322e43aa452e79f1d950a,
         type: 3}

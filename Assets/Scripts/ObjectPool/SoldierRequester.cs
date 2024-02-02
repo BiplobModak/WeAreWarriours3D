@@ -3,17 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum SoldierBaseType 
+{
+    Player,
+    Enemy
+}
 public class SoldierRequester : MonoBehaviour
 {
     [SerializeField] Queue<ISoldier> soldiers = new Queue<ISoldier>();
     
     [SerializeField, BoxGroup("Runtime")] SoldierPool pool;
-    [SerializeField,BoxGroup("Runtime")] PlayerSpawnManager playerBase;
-
+    [SerializeField,BoxGroup("Runtime")] SpawnManager soldierBase;
+    [SerializeField, BoxGroup("EditTime")] SoldierBaseType selfBaseType = SoldierBaseType.Player; 
 
     private void OnEnable()
     {
-        playerBase = GameManager.Instance.GetPlayerBase;
+        
+        
     }
 
     [Button]
@@ -44,14 +50,20 @@ public class SoldierRequester : MonoBehaviour
         ISoldier soldier = soldiers.Dequeue();
         pool.ReleaseSoldier(soldier);
     }
-
+    /// <summary>
+    /// Activateing and setting target for moe
+    /// </summary>
+    /// <param name="soldier"></param>
     private void ActivateSolder(ISoldier soldier) 
     {
         if (soldier is MonoBehaviour monoBehaviour)
         {
             monoBehaviour.gameObject.SetActive(true);
+            ///seeting tags
+            
+            monoBehaviour.tag = transform.tag;
             monoBehaviour.transform.position = transform.position;
-            monoBehaviour.GetComponent<SoldierMover>().MoveTo(playerBase.transform.position);
+            monoBehaviour.GetComponent<SoldierMover>().MoveTo(soldierBase.transform.position);
             soldiers.Enqueue(soldier);
         }
     }

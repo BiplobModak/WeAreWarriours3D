@@ -27,8 +27,11 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Player Base
     /// </summary>
-    [SerializeField] private PlayerSpawnManager spawnManager;
-    public PlayerSpawnManager GetPlayerBase { get { return spawnManager; } }
+    [SerializeField] private SpawnManager playerSpanManager;
+    [SerializeField] private SpawnManager enemySpawnManager;
+
+    public SpawnManager GetPlayerBase { get { return playerSpanManager; } }
+    public SpawnManager GetEnemyBase { get { return enemySpawnManager; } }
     
    private void Awake()
    {

@@ -12,11 +12,22 @@ public abstract class SoldierBaseClass : MonoBehaviour, ISoldier
     /// <summary>
     /// id only for debug
     /// </summary>
-    [BoxGroup("Runtime")]
     [SerializeField, BoxGroup("Runtime")] protected int id;
+    /// <summary>
+    /// self heath
+    /// </summary>
     [SerializeField,BoxGroup("Runtime")] protected Health healthStatus;
+    /// <summary>
+    /// solder Type 
+    /// </summary>
     [SerializeField, BoxGroup("Runtime")] protected SolderType type;
+    /// <summary>
+    /// Weaon Range
+    /// </summary>
     [SerializeField, BoxGroup("Runtime")] protected float rangeRadious;
+    /// <summary>
+    /// weapon
+    /// </summary>
     [SerializeField, BoxGroup("Runtime")] protected BaseWeapon weapon;
     [SerializeField, BoxGroup("Runtime")] protected SphereCollider attackRangeCollider;
     public int ID { get => id; set { id = value; } }
@@ -37,7 +48,7 @@ public abstract class SoldierBaseClass : MonoBehaviour, ISoldier
     /// <summary>
     /// on death 
     /// </summary>
-    public abstract void SelfDeath();
+    public abstract void SelfDeath(Health selfHealth);
 
     /// <summary>
     /// getting usefull informations on enabled
@@ -45,6 +56,7 @@ public abstract class SoldierBaseClass : MonoBehaviour, ISoldier
     protected virtual void OnEnable()
     {
         healthStatus = GetComponent<Health>();
+
         weapon = GetComponentInChildren<BaseWeapon>();
         attackRangeCollider = GetComponentInChildren<SphereCollider>();
         if (attackRangeCollider != null) 

@@ -153,7 +153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dec36b9fd1c782e4b983b3cb2b8d095b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnManager: {fileID: 1653850640}
+  playerSpanManager: {fileID: 1653850640}
+  enemySpawnManager: {fileID: 1241296893}
 --- !u!4 &2927250
 Transform:
   m_ObjectHideFlags: 0
@@ -1398,8 +1399,8 @@ GameObject:
   - component: {fileID: 576042343}
   - component: {fileID: 576042344}
   m_Layer: 0
-  m_Name: ===========debug=======
-  m_TagString: Untagged
+  m_Name: ===========Enemy=======
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1432,7 +1433,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pool: {fileID: 371380980}
-  playerBase: {fileID: 0}
+  soldierBase: {fileID: 1653850640}
+  selfBaseType: 1
 --- !u!1 &589506437
 GameObject:
   m_ObjectHideFlags: 3
@@ -2456,6 +2458,7 @@ GameObject:
   - component: {fileID: 1241296891}
   - component: {fileID: 1241296890}
   - component: {fileID: 1241296889}
+  - component: {fileID: 1241296893}
   m_Layer: 0
   m_Name: Enemy Enemy Point
   m_TagString: Untagged
@@ -2550,6 +2553,18 @@ Transform:
   - {fileID: 576042343}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1241296893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241296888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cff51370139e3a48bd9e174dc477a00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1247509734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3032,6 +3047,53 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1456476626}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1641748579
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1641748580}
+  - component: {fileID: 1641748581}
+  m_Layer: 0
+  m_Name: ===========Player======= (1)
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1641748580
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1641748579}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1653850639}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1641748581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1641748579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 189656e0f100f0847ac107acd25fa3df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pool: {fileID: 371380980}
+  soldierBase: {fileID: 1241296893}
+  selfBaseType: 0
 --- !u!1001 &1646896431
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3222,7 +3284,8 @@ Transform:
   m_LocalPosition: {x: -29.03, y: -3.438, z: 4.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1641748580}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1653850640

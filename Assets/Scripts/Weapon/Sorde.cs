@@ -7,6 +7,9 @@ public class Sorde : BaseWeapon
 {
     public override void Attack(Health healthStatus)
     {
+        if (healthStatus == null) return;
+        if(!gameObject.activeInHierarchy) return;
+
         StartCoroutine(GiveDamage(healthStatus));
     }
     IEnumerator GiveDamage(Health healthStatus)

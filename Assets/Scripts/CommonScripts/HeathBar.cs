@@ -14,14 +14,12 @@ public class HeathBar : MonoBehaviour
         unit = 1f / healthStatus.GetMaxHelath;
 
         //Health status
-        healthStatus.damage += OnGetDamage;
-        healthStatus.death += OnGetDamage;
+        healthStatus.damageflag += OnGetDamage;
     }
 
     private void OnDisable()
     {
-        healthStatus.damage -= OnGetDamage;
-        healthStatus.death -= OnGetDamage;
+        healthStatus.damageflag -= OnGetDamage;
 
     }
     private void OnGetDamage(float heath) 

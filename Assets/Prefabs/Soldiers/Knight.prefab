@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 5142168600019569635}
   - component: {fileID: -2022074661693120545}
   - component: {fileID: 9099289281680545819}
-  - component: {fileID: 3700578361821796283}
+  - component: {fileID: -6630147234652867376}
   m_Layer: 0
   m_Name: Knight
   m_TagString: Untagged
@@ -136,6 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 1405831184013794386}
   animControler: {fileID: 9099289281680545819}
+  movepoint: {x: 0, y: 0, z: 0}
 --- !u!114 &9099289281680545819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,29 +158,33 @@ MonoBehaviour:
     value: 4
   animator: {fileID: 5109036620634267148}
   bleand: Blend
---- !u!136 &3700578361821796283
-CapsuleCollider:
+--- !u!54 &-6630147234652867376
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1294159567072232836}
-  m_Material: {fileID: 0}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.7
-  m_Height: 3.0804186
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.0402093, z: 0}
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!1 &4772513772797379345
 GameObject:
   m_ObjectHideFlags: 0

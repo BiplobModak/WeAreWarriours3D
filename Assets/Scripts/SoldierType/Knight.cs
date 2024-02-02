@@ -12,7 +12,7 @@ public class Knight : SoldierBaseClass
         throw new System.NotImplementedException();
     }
 
-    public override void SelfDeath()
+    public override void SelfDeath(Health h)
     {
         throw new System.NotImplementedException();
     }
