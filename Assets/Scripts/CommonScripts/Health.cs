@@ -7,15 +7,17 @@ using UnityEngine;
 /// Generating Health System
 /// 
 /// </summary>
-public class HealthStatus : MonoBehaviour, IHealth
+public class Health : MonoBehaviour, IHealth
 {
     /// <summary>
     /// this delegate resposible for health statys
     /// </summary>
     /// <param name="health">current health</param>
-    public delegate void HealthStatusFlag(float health);
-    public HealthStatusFlag damage;
-    public HealthStatusFlag death;
+    public delegate void HealthDamageFlag(float health);
+    public HealthDamageFlag damageflag;
+
+    public delegate void HealthStatus(Health selfHealth);    
+    public HealthStatus death;
 
     /// <summary>
     /// only used in UI 
@@ -31,7 +33,7 @@ public class HealthStatus : MonoBehaviour, IHealth
     /// <summary>
     /// Self Health
     /// </summary>
-    public float Health { get => health; set { health = value; } }
+    public float HealthValue { get => health; set { health = value; } }
 
 
 
@@ -41,16 +43,27 @@ public class HealthStatus : MonoBehaviour, IHealth
     /// <param name="damage"></param>
     public void GetDamage(float damage)
     {
-        if (health > 0 && health > damage)
+        if (HealthValue > 0 && HealthValue > damage)
         {
-            health -= damage;
-            this.damage.Invoke(health);
+            HealthValue -= damage;
+            damageflag?.Invoke(HealthValue);
         }
         else 
         {
-            health = 0;
-            death.Invoke(health);
+            HealthValue = 0;
+            damageflag?.Invoke(HealthValue);
+            death?.Invoke(this);
         }
     }
 
+    /// <summary>
+    /// Reseting all value 
+    /// </summary>
+    public void ResetALl()
+    {
+        HealthValue = maxHealth;
+        // it will fill the health bar again
+        damageflag.Invoke(HealthValue);
+        
+    }
 }

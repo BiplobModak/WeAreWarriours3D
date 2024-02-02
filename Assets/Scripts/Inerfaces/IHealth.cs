@@ -6,6 +6,6 @@
 /// </summary>
 public interface IHealth
 {
-    float Health { get; set; }
+    float HealthValue { get; set; }
     void GetDamage(float damage);
 }

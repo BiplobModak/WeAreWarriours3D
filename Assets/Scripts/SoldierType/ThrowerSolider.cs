@@ -12,11 +12,11 @@ public class ThrowerSolider : SoldierBaseClass
     {
     }
 
-    public override void Death()
+    public override void SelfDeath()
     {
     }
 
-    public override void Ditect()
+    public override void Detect()
     {
     }
 }

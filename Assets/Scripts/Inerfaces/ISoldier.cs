@@ -10,7 +10,7 @@ public interface ISoldier
     /// <summary>
     /// Atached Health Status
     /// </summary>
-    HealthStatus Status { get; set; }
+    Health Status { get; set; }
     /// <summary>
     /// Solder type
     /// </summary>

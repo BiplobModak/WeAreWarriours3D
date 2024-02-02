@@ -14,32 +14,47 @@ public abstract class SoldierBaseClass : MonoBehaviour, ISoldier
     /// </summary>
     [BoxGroup("Runtime")]
     [SerializeField, BoxGroup("Runtime")] protected int id;
-    [SerializeField,BoxGroup("Runtime")] protected HealthStatus healthStatus;
+    [SerializeField,BoxGroup("Runtime")] protected Health healthStatus;
     [SerializeField, BoxGroup("Runtime")] protected SolderType type;
     [SerializeField, BoxGroup("Runtime")] protected float rangeRadious;
+    [SerializeField, BoxGroup("Runtime")] protected BaseWeapon weapon;
+    [SerializeField, BoxGroup("Runtime")] protected SphereCollider attackRangeCollider;
     public int ID { get => id; set { id = value; } }
 
-    public HealthStatus Status { get => healthStatus; set => healthStatus = value; }
+    public Health Status { get => healthStatus; set => healthStatus = value; }
     public SolderType Type { get => type; set => type = value; }
 
     /// <summary>
     /// Attack Functionalites
     /// </summary>
     public abstract void Attack();
-    
+
     /// <summary>
-    /// ditected Functionaties
+    /// Detecting Functionaties
     /// </summary>
-    public abstract void Ditect();
+    public abstract void Detect();
 
     /// <summary>
     /// on death 
     /// </summary>
-    public abstract void Death();
+    public abstract void SelfDeath();
 
-    private void OnEnable()
+    /// <summary>
+    /// getting usefull informations on enabled
+    /// </summary>
+    protected virtual void OnEnable()
     {
-        healthStatus = GetComponent<HealthStatus>();
+        healthStatus = GetComponent<Health>();
+        weapon = GetComponentInChildren<BaseWeapon>();
+        attackRangeCollider = GetComponentInChildren<SphereCollider>();
+        if (attackRangeCollider != null) 
+        {
+            attackRangeCollider.radius = weapon.Range;
+        }
     }
 
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+        
+    }
 }
