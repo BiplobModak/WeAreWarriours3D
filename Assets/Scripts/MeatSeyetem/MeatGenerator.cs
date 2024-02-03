@@ -10,6 +10,7 @@ public class MeatGenerator : MonoBehaviour
 
     public delegate void MeatStatus(int meatCount);
     public MeatStatus FoodGenerated;
+    public MeatStatus CheckFoodUpdate;
 
     [SerializeField] int meatCount = 2;
     public int GetMeatCount => meatCount;
@@ -62,7 +63,7 @@ public class MeatGenerator : MonoBehaviour
     /// <summary>
     /// it will kill the meatgenerating tween
     /// </summary>
-    [ContextMenu("stop")]
+    
     private void StopMeatGeneration() {
         StopGenerating?.Invoke();
 #if UNITY_EDITOR
@@ -72,4 +73,12 @@ public class MeatGenerator : MonoBehaviour
 
 
     /// requird upgread subscriber
+    public void DeductMeat(int cost) 
+    {
+        if (cost <= meatCount) 
+        {
+            meatCount -= cost;
+            CheckFoodUpdate?.Invoke(meatCount);
+        }
+    }
 }

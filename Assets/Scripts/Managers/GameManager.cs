@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class GameManager : MonoBehaviour
 {
-    //singlen tone
+    //single tone
     //Game win 
     //game lose 
     //player status
@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
         else if (Instance!= this) 
         {
@@ -50,8 +50,12 @@ public class GameManager : MonoBehaviour
     }
     private void OnEnable()
     {
-        //process havy
-        correnLevelManger = GameObject.FindAnyObjectByType<LevelManager>();  
+        //Not a good way to get object
+        correnLevelManger = FindAnyObjectByType<LevelManager>();
+
+        playerSpanManager = GameObject.FindGameObjectWithTag("PlayerBase").GetComponent<SpawnManager>();
+        enemySpawnManager = GameObject.FindGameObjectWithTag("EnemyBase").GetComponent<SpawnManager>();
     }
 
+    
 }

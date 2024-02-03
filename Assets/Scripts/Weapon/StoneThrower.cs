@@ -25,7 +25,7 @@ public class StoneThrower : BaseWeapon
     
 
     /// <summary>
-    /// Oposit soldier, it's Change based on ditection
+    /// other soldier, it's Change based on detection
     /// </summary>
     [SerializeField] Health currentTarget;
     public override void Attack(Health enemyHealth)
@@ -47,7 +47,7 @@ public class StoneThrower : BaseWeapon
     }
 
     /// <summary>
-    /// Createing object and storing into a que
+    /// Creating object and storing into a queue
     /// </summary>
     private Transform GetObject()
     {

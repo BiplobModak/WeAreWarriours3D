@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1273174, g: 0.13414761, b: 0.12107885, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2927250}
   - component: {fileID: 2927249}
-  - component: {fileID: 2927251}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -153,8 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dec36b9fd1c782e4b983b3cb2b8d095b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpanManager: {fileID: 1653850640}
-  enemySpawnManager: {fileID: 1241296893}
+  playerSpanManager: {fileID: 0}
+  enemySpawnManager: {fileID: 0}
 --- !u!4 &2927250
 Transform:
   m_ObjectHideFlags: 0
@@ -170,19 +169,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2927251
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2927248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ae72cf81d44f2443afa93cc6017c73a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uIsceneBuildIndex: 1
 --- !u!1 &81967495
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,6 +537,7 @@ GameObject:
   - component: {fileID: 203900813}
   - component: {fileID: 203900812}
   - component: {fileID: 203900811}
+  - component: {fileID: 203900814}
   m_Layer: 0
   m_Name: Level Manager
   m_TagString: Untagged
@@ -571,7 +558,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meatGenerateTime: 0.2
+  levelNumber: 1
   meatGenerator: {fileID: 0}
+  soldierCosts: 
 --- !u!114 &203900812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -595,6 +584,108 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.2960393, y: -16.735575, z: -7.1081376}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &203900814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203900810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ae72cf81d44f2443afa93cc6017c73a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uIsceneBuildIndex: 1
+--- !u!1 &216490350
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 216490355}
+  - component: {fileID: 216490354}
+  - component: {fileID: 216490353}
+  - component: {fileID: 216490352}
+  - component: {fileID: 216490351}
+  m_Layer: 0
+  m_Name: EnemyPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &216490351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216490350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2fae4422d0a4b6449709c6708b11937, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soldierPrefab: {fileID: 1294159567072232836, guid: 1d1a661f5b47a924680ad296eda84cd0,
+    type: 3}
+--- !u!114 &216490352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216490350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a0d47dae0186c24f86a4c126cceebe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soldierPrefab: {fileID: 1294159567072232836, guid: 594ff4ffe2bf02246bd72a8e402ff796,
+    type: 3}
+--- !u!114 &216490353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216490350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd18f32a6c315a34eb0f3dcb8496e397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soldierPrefab: {fileID: 1294159567072232836, guid: a67f417d61301cc419db0847db3f3d67,
+    type: 3}
+--- !u!114 &216490354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216490350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bb428c6fefece24c82b10cf03c5886f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &216490355
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216490350}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -893,8 +984,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.037629496, y: -0.8924908, z: 0.41773197, w: 0.16596486}
-  m_LocalPosition: {x: 5, y: 20, z: 15.88}
+  m_LocalRotation: {x: 0.0738448, y: -0.8746589, z: 0.41287133, w: 0.24301474}
+  m_LocalPosition: {x: 9.8, y: 20, z: 15.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1221,7 +1312,7 @@ GameObject:
   - component: {fileID: 371380982}
   - component: {fileID: 371380981}
   m_Layer: 0
-  m_Name: soldierPool
+  m_Name: PlayerPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1313,7 +1404,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &410087040
 Light:
   m_ObjectHideFlags: 0
@@ -2573,7 +2664,7 @@ GameObject:
   - component: {fileID: 1241296893}
   m_Layer: 0
   m_Name: Player Base
-  m_TagString: Untagged
+  m_TagString: PlayerBase
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2637,7 +2728,7 @@ Transform:
   m_GameObject: {fileID: 1241296888}
   serializedVersion: 2
   m_LocalRotation: {x: 0.00001978601, y: -0.0045855227, z: 0.007426078, w: 0.9999619}
-  m_LocalPosition: {x: 22, y: -1.76, z: 6.75}
+  m_LocalPosition: {x: 21.7, y: -1.76, z: 6.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2656,11 +2747,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cff51370139e3a48bd9e174dc477a00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fibonocic1: 0
-  fibonocic2: 0
-  fibonoci3: 0
-  max_stepfor2: 0
-  max_stepfor3: 0
+  fibonocic1: 1
+  fibonocic2: 1
+  fibonocic3: 1
+  stepsFor1: 0
+  stepsFor2: 0
+  stepsFor3: 0
+  time1: 2
+  time2: 3
+  time3: 5
+  requester: {fileID: 576042344}
+  auto: 0
+  health: {fileID: 1882222497}
 --- !u!1001 &1247509734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3187,7 +3285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189656e0f100f0847ac107acd25fa3df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pool: {fileID: 371380980}
+  pool: {fileID: 216490354}
   soldierBase: {fileID: 1241296893}
   selfBaseType: 1
 --- !u!1001 &1646896431
@@ -3291,7 +3389,7 @@ GameObject:
   - component: {fileID: 1653850640}
   m_Layer: 0
   m_Name: Enemy Base
-  m_TagString: Untagged
+  m_TagString: EnemyBase
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3374,11 +3472,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cff51370139e3a48bd9e174dc477a00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fibonocic1: 0
-  fibonocic2: 0
-  fibonoci3: 0
-  max_stepfor2: 0
-  max_stepfor3: 0
+  fibonocic1: 1
+  fibonocic2: 1
+  fibonocic3: 1
+  stepsFor1: 0
+  stepsFor2: 0
+  stepsFor3: 0
+  time1: 10
+  time2: 15
+  time3: 20
+  requester: {fileID: 1641748581}
+  auto: 1
+  health: {fileID: 125449083}
 --- !u!1001 &1704212305
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4097,14 +4202,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1988125003}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.037629496, y: -0.8924908, z: 0.41773197, w: 0.16596486}
-  m_LocalPosition: {x: 5, y: 20, z: 15.88}
+  m_LocalRotation: {x: 0.0738448, y: -0.8746589, z: 0.41287133, w: 0.24301474}
+  m_LocalPosition: {x: 9.8, y: 20, z: 15.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 589506438}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 49.3, y: -156.041, z: 6.294}
+  m_LocalEulerAnglesHint: {x: 49.3, y: -146.055, z: 6.294}
 --- !u!1001 &2047028249
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4246,9 +4351,10 @@ SceneRoots:
   - {fileID: 1653850639}
   - {fileID: 1071046687}
   - {fileID: 81967496}
-  - {fileID: 125449082}
   - {fileID: 1882222496}
+  - {fileID: 125449082}
   - {fileID: 335810775}
   - {fileID: 203900813}
   - {fileID: 2927250}
   - {fileID: 371380979}
+  - {fileID: 216490355}

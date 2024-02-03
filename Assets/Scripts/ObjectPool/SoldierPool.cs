@@ -29,18 +29,18 @@ public class SoldierPool : MonoBehaviour
         if (!poolDictionary.ContainsKey(soldierType))
         {
             poolDictionary[soldierType] = new Queue<ISoldier>();
-            Debug.Log("Pool Created"+ poolDictionary[soldierType].Count);
+            //Debug.Log("Pool Created"+ poolDictionary[soldierType].Count);
         }
 
         if (poolDictionary[soldierType].Count == 0)
         {
-            Debug.Log($"Creating a new {soldierType} instance.");
+            //Debug.Log($"Creating a new {soldierType} instance.");
             switch (soldierType)
             {
                 case SolderType.Ground:
                     {
                         SoldierBaseClass groundSoldier = groundSoldierFactory.CreateSoldier(SolderType.Ground, poolDictionary[soldierType].Count);
-                        
+
                         Debug.Log(groundSoldier);
                         return groundSoldier;
                     }
@@ -58,17 +58,14 @@ public class SoldierPool : MonoBehaviour
                     }
                 default:
                     {
-#if UNITY_EDITOR
                         Debug.Log("No in Factory Scope");
-                        throw new System.NullReferenceException();
-#endif
+                        return null;
                     }
             }
-            
         }
         else
         {
-            Debug.Log($"Reusing an existing {soldierType} instance.");
+            //Debug.Log($"Reusing an existing {soldierType} instance.");
             ISoldier soldier = poolDictionary[soldierType].Dequeue();
             return soldier;
         }
@@ -87,6 +84,7 @@ public class SoldierPool : MonoBehaviour
         if (soldier is MonoBehaviour monoBehaviour)
         {
             monoBehaviour.gameObject.SetActive(false);
+            monoBehaviour.transform.position = transform.position;
         }
         poolDictionary[soldier.Type].Enqueue(soldier);
     }

@@ -45,6 +45,8 @@ public class AnimationControler : MonoBehaviour
     {
         foreach (AnimeStage stage in states)
         {
+            if (animationvalue.ContainsKey(stage.animatonStage)) continue;
+
             animationvalue.Add(stage.animatonStage, stage.value);
         }
         

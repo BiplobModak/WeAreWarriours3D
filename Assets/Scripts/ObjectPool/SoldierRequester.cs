@@ -13,17 +13,25 @@ public class SoldierRequester : MonoBehaviour
     [SerializeField] Queue<ISoldier> soldiers = new Queue<ISoldier>();
     
     [SerializeField, BoxGroup("Runtime")] SoldierPool pool;
-    [SerializeField,BoxGroup("Runtime")] SpawnManager soldierBase;
-    [SerializeField, BoxGroup("EditTime")] SoldierBaseType selfBaseType = SoldierBaseType.Player; 
+    [SerializeField,BoxGroup("EditTime")] SpawnManager soldierBase;
+    [SerializeField, BoxGroup("EditTime")] SoldierBaseType selfBaseType = SoldierBaseType.Player;
+    public SoldierBaseType GetBaseType { get { return selfBaseType; } }
 
     private void OnEnable()
     {
         
         
     }
+    public void GetSoldier(SolderType type) 
+    { 
+    
+        ISoldier soldier = pool.GetSoldier(type);
+
+        ActivateSolder(soldier);
+    }
 
     [Button]
-    public void GetSoldier() 
+    public void GetGroundSoldier() 
     {
         ISoldier soldier = pool.GetSoldier(SolderType.Ground);
         
@@ -66,6 +74,7 @@ public class SoldierRequester : MonoBehaviour
             monoBehaviour.GetComponent<SoldierMover>().MoveTo(soldierBase.transform.position);
             // upper level relies
             monoBehaviour.GetComponent<Health>().death += ReleaseSoldier;
+            monoBehaviour.GetComponent<Health>().ResetALl();
             soldiers.Enqueue(soldier);
         }
     }

@@ -204,9 +204,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 654bdd3335e471b4c9c98ec21721ce70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 5
+  range: 3
   damagePower: 3
-  attackrate: 1
+  attackrate: 1.37
 --- !u!1001 &1696841201751073693
 PrefabInstance:
   m_ObjectHideFlags: 0

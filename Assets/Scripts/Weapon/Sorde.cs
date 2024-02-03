@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// A type of weapon High damage low radious
+/// A type of weapon High damage low radius
 /// </summary>
 public class Sorde : BaseWeapon
 {
     /// <summary>
-    /// Main attacking hapning here
+    /// Main attacking happening here
     /// </summary>
     /// <param name="healthStatus"></param>
     public override void Attack(Health healthStatus)

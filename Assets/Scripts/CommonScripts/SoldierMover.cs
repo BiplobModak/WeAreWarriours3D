@@ -1,5 +1,4 @@
 using Sirenix.OdinInspector;
-using TreeEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -63,6 +62,9 @@ public class SoldierMover : MonoBehaviour
     {
         if (!navMeshAgent.enabled) return;
         // Resume the player's movement
+        if (!navMeshAgent.isOnNavMesh) return;
+        
+
         navMeshAgent.isStopped = false;
         MoveTo(movepoint);
     }

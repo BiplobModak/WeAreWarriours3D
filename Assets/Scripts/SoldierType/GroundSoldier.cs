@@ -5,7 +5,7 @@ using DG.Tweening;
 using Sirenix.OdinInspector;
 /// <summary>
 /// Base solder short attack Range and low type
-/// this script respocibility is to detact and attack and control all components
+/// this script responsibility is to detect and attack and control all components
 /// </summary>
 public class GroundSoldier : SoldierBaseClass
 {
@@ -75,38 +75,39 @@ public class GroundSoldier : SoldierBaseClass
         gameObject.SetActive(false);        
     }
     /// <summary>
-    /// detecting enemys based on record
+    /// detecting enemy based on record
     /// </summary>
     public override void Detect()
     {
         if (currentEnemysInRange.Count > 0)
         {
             currentTarget = currentEnemysInRange[0];
+            
 
             InvokeRepeating(nameof(CheckDistacne), .1f, .1f);
         }
         else 
         {
-            //continueing movement again
+            //continuing movement again
             mover.ResumeMovement();
         }
     }
 
     /// <summary>
-    /// Checkeing distance by InvokRepeting
+    /// Checking distance by InvokRepeting
     /// </summary>
     private void CheckDistacne() 
     {
         float distance = Vector3.Distance(transform.position, currentTarget.transform.position);
         if (distance < weapon.Range) 
         {
-            Debug.Log("Detacting");
-            //stop cheaking distace
+            Debug.Log("Detecting");
+            //stop checking distance
             CancelInvoke(nameof(CheckDistacne));
-            //moveer stop movement
+            //mover stop movement
             mover.StopMovement();
             mover.PlayeAttackAnimation();
-            //weapon start attaking
+            //weapon start attaching
             Attack();
         }
         
@@ -126,7 +127,7 @@ public class GroundSoldier : SoldierBaseClass
     }
 
     /// <summary>
-    /// Calling wehnd enemy curretn enemy is death
+    /// Calling when enemy current enemy is death
     /// </summary>
     private void CurretnTargetDeth() 
     {
@@ -138,7 +139,7 @@ public class GroundSoldier : SoldierBaseClass
 
 
     /// <summary>
-    /// Decting colution based on trigger inter
+    /// Decking collation based on trigger inter
     /// </summary>
     /// <param name="other"></param>
     protected override void OnTriggerEnter(Collider other)
