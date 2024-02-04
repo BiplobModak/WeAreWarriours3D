@@ -13,10 +13,11 @@ Ability to keep playing the game
 
 What to keep in mind when making the prototype
 
-Keep it simple but polish the mechanic as much as you like. Add character animations, combat animations, sfx, vfx etc
-Keep the system scalable. Your implementation should be extendable enough that anyone can add new variations of enemies and warriors later with different ability and stats
-The warriors/enemies animator should be extendable for future variations
-Use git from the beginning of the project and commit changes frequently. Once you are done with a small feature, commit and push before moving on to next feature
+* Keep it simple but polish the mechanic as much as you like. 
+* Add character animations, combat animations, sfx, vfx etc
+* Keep the system scalable. Your implementation should be extendable enough that anyone can add new variations of enemies and warriors later with different ability and stats
+* The warriors/enemies animator should be extendable for future variations
+* Use git from the beginning of the project and commit changes frequently. Once you are done with a small feature, commit and push before moving on to next feature
 
 Additional things you can do (Optional)
 
