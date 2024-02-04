@@ -13,7 +13,10 @@ public class MeatGenerator : MonoBehaviour
     public MeatStatus CheckFoodUpdate;
 
     [SerializeField] int meatCount = 2;
-    public int GetMeatCount => meatCount;
+    /// <summary>
+    /// Set only for testing purpose
+    /// </summary>
+    public int GetMeatCount { get { return meatCount; } set { meatCount = value; } }
     LevelManager levelManager;
 
     private void OnEnable()

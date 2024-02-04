@@ -16,7 +16,7 @@ public class GroundSoldier : SoldierBaseClass
     /// <summary>
     /// Target enemy health
     /// </summary>
-    [SerializeField, BoxGroup("Runtime"),ReadOnly] Health currentTarget;
+    [SerializeField, BoxGroup("Runtime"),ReadOnly] Health currentTarget, tempTarget;
     /// <summary>
     /// Soldier mover
     /// </summary>
@@ -39,7 +39,7 @@ public class GroundSoldier : SoldierBaseClass
     /// </summary>
     public override void Attack()
     {
-        if (!currentTarget.gameObject.activeInHierarchy) return;
+        if (currentTarget == null || !currentTarget.gameObject.activeInHierarchy) return;
 
         Debug.Log("Attacking");
         //transform.DOLookAt(currentTarget.transform.position, .1f).OnComplete(() => { 
@@ -81,10 +81,9 @@ public class GroundSoldier : SoldierBaseClass
     {
         if (currentEnemysInRange.Count > 0)
         {
-            currentTarget = currentEnemysInRange[0];
-            
+            tempTarget = currentEnemysInRange[0];            
 
-            InvokeRepeating(nameof(CheckDistacne), .1f, .1f);
+            InvokeRepeating(nameof(CheckDistacne), Time.fixedDeltaTime, Time.fixedDeltaTime);
         }
         else 
         {
@@ -98,10 +97,11 @@ public class GroundSoldier : SoldierBaseClass
     /// </summary>
     private void CheckDistacne() 
     {
-        float distance = Vector3.Distance(transform.position, currentTarget.transform.position);
+        float distance = Vector3.Distance(transform.position, tempTarget.transform.position);
         if (distance < weapon.Range) 
         {
             Debug.Log("Detecting");
+            currentTarget = tempTarget;
             //stop checking distance
             CancelInvoke(nameof(CheckDistacne));
             //mover stop movement
@@ -133,6 +133,8 @@ public class GroundSoldier : SoldierBaseClass
     {
         
         Debug.Log("Enemy is Death");
+        currentTarget = null;
+        tempTarget = null;
         Detect();
     }
 

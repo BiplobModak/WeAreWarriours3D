@@ -25,6 +25,7 @@ public class Health : MonoBehaviour, IHealth
     [SerializeField]private float maxHealth;
 
     [SerializeField]private float health;
+    [SerializeField] private GameObject blood;
 
     /// <summary>
     /// getting maxHealth
@@ -51,6 +52,10 @@ public class Health : MonoBehaviour, IHealth
         else 
         {
             HealthValue = 0;
+            
+            ///not used
+            if(blood != null) Destroy(Instantiate(blood, transform.position, transform.rotation), 2f);
+
             damageflag?.Invoke(HealthValue);
             death?.Invoke(this);
         }

@@ -10,7 +10,7 @@ public enum SoldierBaseType
 }
 public class SoldierRequester : MonoBehaviour
 {
-    [SerializeField] Queue<ISoldier> soldiers = new Queue<ISoldier>();
+    [SerializeField] List<ISoldier> soldiers = new List<ISoldier>();
     
     [SerializeField, BoxGroup("Runtime")] SoldierPool pool;
     [SerializeField,BoxGroup("EditTime")] SpawnManager soldierBase;
@@ -26,7 +26,7 @@ public class SoldierRequester : MonoBehaviour
     { 
     
         ISoldier soldier = pool.GetSoldier(type);
-
+        if (soldier == null) return;
         ActivateSolder(soldier);
     }
 
@@ -56,6 +56,7 @@ public class SoldierRequester : MonoBehaviour
     public void ReleaseSoldier(Health health)
     {
         ISoldier soldier = health.GetComponent<ISoldier>();
+        if(soldiers.Contains(soldier)) soldiers.Remove(soldier);
         pool.ReleaseSoldier(soldier); ;
     }
     /// <summary>
@@ -64,6 +65,7 @@ public class SoldierRequester : MonoBehaviour
     /// <param name="soldier"></param>
     private void ActivateSolder(ISoldier soldier) 
     {
+        soldiers.Add(soldier);
         if (soldier is MonoBehaviour monoBehaviour)
         {
             monoBehaviour.gameObject.SetActive(true);
@@ -75,7 +77,6 @@ public class SoldierRequester : MonoBehaviour
             // upper level relies
             monoBehaviour.GetComponent<Health>().death += ReleaseSoldier;
             monoBehaviour.GetComponent<Health>().ResetALl();
-            soldiers.Enqueue(soldier);
         }
     }
 }

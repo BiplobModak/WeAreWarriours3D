@@ -17,7 +17,7 @@ public class ThrowerSolider : SoldierBaseClass
     /// <summary>
     /// Target enemy health
     /// </summary>
-    [SerializeField, BoxGroup("Runtime"), ReadOnly] Health currentTarget;
+    [SerializeField, BoxGroup("Runtime"), ReadOnly] Health currentTarget, tempTarget;
     /// <summary>
     /// Soldier mover
     /// </summary>
@@ -40,7 +40,7 @@ public class ThrowerSolider : SoldierBaseClass
     /// </summary>
     public override void Attack()
     {
-        if (!currentTarget.gameObject.activeInHierarchy) return;
+        if ( currentTarget == null ||!currentTarget.gameObject.activeInHierarchy) return;
 
         Debug.Log("Attacking");
         //transform.DOLookAt(currentTarget.transform.position, .1f).OnComplete(() => {
@@ -79,11 +79,12 @@ public class ThrowerSolider : SoldierBaseClass
     /// </summary>
     public override void Detect()
     {
+        if (currentTarget != null) return;
         if (currentEnemysInRange.Count > 0)
         {
-            currentTarget = currentEnemysInRange[0];
-
-            InvokeRepeating(nameof(CheckDistacne), .1f, .1f);
+            tempTarget = currentEnemysInRange[0];
+            currentEnemysInRange.RemoveAt(0);
+            InvokeRepeating(nameof(CheckDistacne), Time.fixedDeltaTime, Time.fixedDeltaTime);
         }
         else
         {
@@ -97,10 +98,11 @@ public class ThrowerSolider : SoldierBaseClass
     /// </summary>
     private void CheckDistacne()
     {
-        float distance = Vector3.Distance(transform.position, currentTarget.transform.position);
-        if (distance < weapon.Range)
+        float distance = Vector3.Distance(transform.position, tempTarget.transform.position);
+        if (distance < weapon.Range+5f)
         {
             Debug.Log("Detacting");
+            currentTarget = tempTarget;
             //stop cheaking distace
             CancelInvoke(nameof(CheckDistacne));
             //moveer stop movement
@@ -108,6 +110,7 @@ public class ThrowerSolider : SoldierBaseClass
             //weapon start attaking
             Attack();
         }
+        
 
     }
 
@@ -117,10 +120,10 @@ public class ThrowerSolider : SoldierBaseClass
     /// <param name="deathEnemy"></param>
     private void RemoveFromList(Health deathEnemy)
     {
+        CurretnTargetDeth();
         if (currentEnemysInRange.Contains(deathEnemy))
         {
-            currentEnemysInRange.Remove(deathEnemy);
-            CurretnTargetDeth();
+            currentEnemysInRange.Remove(deathEnemy);            
         }
     }
 
@@ -129,7 +132,8 @@ public class ThrowerSolider : SoldierBaseClass
     /// </summary>
     private void CurretnTargetDeth()
     {
-
+        currentTarget = null;
+        tempTarget = null;
         Debug.Log("Enemy is Death");
         Detect();
     }

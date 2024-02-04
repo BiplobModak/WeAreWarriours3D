@@ -32,7 +32,7 @@ public class SoldierPool : MonoBehaviour
             //Debug.Log("Pool Created"+ poolDictionary[soldierType].Count);
         }
 
-        if (poolDictionary[soldierType].Count == 0)
+        if (poolDictionary[soldierType].Count <= 0)
         {
             //Debug.Log($"Creating a new {soldierType} instance.");
             switch (soldierType)
@@ -80,13 +80,14 @@ public class SoldierPool : MonoBehaviour
     public void ReleaseSoldier(ISoldier soldier)
     {
         Debug.Log(soldier);
+        poolDictionary[soldier.Type].Enqueue(soldier);
 
         if (soldier is MonoBehaviour monoBehaviour)
         {
+            monoBehaviour.GetComponent<SphereCollider>().enabled = true;
             monoBehaviour.gameObject.SetActive(false);
             monoBehaviour.transform.position = transform.position;
         }
-        poolDictionary[soldier.Type].Enqueue(soldier);
     }
 
 }

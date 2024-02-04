@@ -57,6 +57,7 @@ public class LevelManager : MonoBehaviour
     }
     public void OnLevelLose()
     {
+        GameManager.Instance.GetEnemyBase.gameObject.SetActive(false);
         Debug.Log("Player Lose ==========================================================");
         levelFailed?.Invoke(levelNumber);
 

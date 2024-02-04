@@ -32,9 +32,9 @@ public class SoldierMover : MonoBehaviour
         // Move the player to the specified destination
         movepoint = destination;
         Debug.Log(navMeshAgent);
+        animControler.Move();
         navMeshAgent.isStopped = false;
         navMeshAgent.SetDestination(destination);
-        animControler.Move();
     }
 
     /// <summary>

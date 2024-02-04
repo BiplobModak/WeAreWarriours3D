@@ -14,9 +14,7 @@ public class StoneThrower : BaseWeapon
     /// </summary>
     [SerializeField, Required] GameObject throwObject;
 
-    [SerializeField, Required] Transform trowpoint;
-    [SerializeField] float trowDelay = 1f;
-    [SerializeField] float trowPower = 1f;
+    //[SerializeField, Required] Transform trowpoint;
     /// <summary>
     /// Stone pool
     /// </summary>
@@ -30,10 +28,11 @@ public class StoneThrower : BaseWeapon
     [SerializeField] Health currentTarget;
     public override void Attack(Health enemyHealth)
     {
-        transform.GetChild(0).gameObject.SetActive(true);
+        //transform.GetChild(0).gameObject.SetActive(true);
         ///hitting 
         currentTarget = enemyHealth;
-        StartCoroutine(TrowStone());
+        ThrowObject();
+        //StartCoroutine(TrowStone());
     }
     /// <summary>
     /// delay for animation
@@ -41,35 +40,41 @@ public class StoneThrower : BaseWeapon
     /// <returns></returns>
     IEnumerator TrowStone() 
     {
-        yield return new WaitForSeconds(trowDelay);
-        ThrowObject(GetObject());
-        transform.GetChild(0).gameObject.SetActive(false);
+        yield return new WaitForSeconds(AttackRate);
+        
+        //transform.GetChild(0).gameObject.SetActive(false);
     }
 
     /// <summary>
     /// Creating object and storing into a queue
     /// </summary>
-    private Transform GetObject()
-    {
-        if (stones.Count <= 0)
-        {
-            GameObject stone = Instantiate(throwObject, transform.position, transform.rotation, transform.GetChild(0));
-            return stone.transform;
-        }
-        else 
-        {
-            return stones.Dequeue();
-        }
-    }
+    //private Transform GetObject()
+    //{
+    //    //GameObject stone = Instantiate(throwObject, transform.position, transform.rotation, transform.GetChild(0));
+    //    //stone.transform.DOMove(currentTarget.transform.position, 1f, false).OnComplete(() => {
+    //    //    currentTarget.GetDamage(DamagePower);
+    //    //    Destroy(stone, .1f);
+    //    //});
+    //    //return stone.transform;
+    //}
     /// <summary>
     /// only for show projectile
     /// </summary>
-    private void ThrowObject(Transform stone) 
+    private void ThrowObject() 
     {
-        stone.DOJump(trowpoint.position, 1f, 1, .25f, false).SetEase(Ease.Linear).OnComplete(() => {
-            currentTarget.GetDamage(DamagePower);
-            ResetOnDeath(stone);
+        if (!currentTarget.gameObject.activeInHierarchy) {
+            currentTarget = null;
+            return;
+        }
+        GameObject stone = Instantiate(throwObject, transform.position, transform.rotation, transform.GetChild(0));
+        currentTarget.GetDamage(DamagePower);
+        Vector3 point = currentTarget.transform.position;
+        stone.transform.DOMove(point, .5f, false).OnComplete(() => {
+            Destroy(stone, .1f);
         });
+
+        //stone.DOJump(trowpoint.position, 1f, 1, .25f, false).SetEase(Ease.Linear).OnComplete(() => {
+        //});
     }
 
     /// <summary>

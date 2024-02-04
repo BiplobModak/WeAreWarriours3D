@@ -102,6 +102,7 @@ public class UIManger : MonoBehaviour
         GameManager.Instance.GetLevelMange.StartLevel();
         gamePanal.SetActive(true);
         startPanal.SetActive(false);
+        meatCount.text = GameManager.Instance.GetLevelMange.GetMeatGenerator.GetMeatCount.ToString("00");
     }
 
     public void OnLevelWin(int levelNumber) 
@@ -118,5 +119,10 @@ public class UIManger : MonoBehaviour
     {
         DOTween.KillAll();
         SceneManager.LoadScene(0);
+    }
+    public void AddMeat() 
+    {
+        //only for testing purpose
+        GameManager.Instance.GetLevelMange.GetMeatGenerator.GetMeatCount = 200;
     }
 }
